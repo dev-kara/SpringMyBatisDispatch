@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TestMapper">
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.example.entity.Test">
+		INSERT INTO t_test (name) VALUES (#{name})
+	</insert>
+
+	<update id="update" parameterType="com.example.entity.Test">
+		UPDATE t_test SET name =
+		#{name} WHERE id = #{id}
+	</update>
+
+	<select id="select" resultType="com.example.entity.Test">
+		SELECT * FROM t_test
+		<if test="id != null"> WHERE id = #{id}</if>
+	</select>
+</mapper>
